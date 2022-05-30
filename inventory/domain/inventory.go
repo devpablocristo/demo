@@ -2,10 +2,9 @@ package inventory
 
 type InventoryRepository interface {
 	SaveBook(book Book) error
-	//GetBook(isbn string) (Book, error)
 	ListInventory() ([]Book, error)
-	//DeleteBook(isbn string) error
 }
+
 type Book struct {
 	Author Person  `json:"author"`
 	Title  string  `json:"title"`

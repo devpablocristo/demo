@@ -1,7 +1,7 @@
 package muxrouter
 
 import (
-	"fmt"
+	"log"
 	"net/http"
 
 	"github.com/gorilla/mux"
@@ -47,6 +47,6 @@ func (mx MuxRouter) DELETE(path string, handler func(w http.ResponseWriter, r *h
 }
 
 func (mx MuxRouter) SERVE(port string) {
-	fmt.Println("Starting server on port:", port)
+	log.Println("Inventory Service starting server on port:", port)
 	http.ListenAndServe(port, muxRouterInstance)
 }

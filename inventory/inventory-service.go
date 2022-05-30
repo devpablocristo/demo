@@ -1,7 +1,6 @@
 package inventorysrv
 
 import (
-	"fmt"
 	"sync"
 
 	inventory "github.com/devpablocristo/interviews/b6/inventory/domain"
@@ -54,47 +53,9 @@ func InventoryService(wg *sync.WaitGroup) {
 
 	inventoryControllers := getInventoryControllers()
 
-	httpMuxRouter.POST("/inventory/add/book", inventoryControllers.Add)
-	httpMuxRouter.GET("/inventory/get", inventoryControllers.GetAll)
-	httpMuxRouter.SERVE(":9999")
-	// fmt.Printf("\nMap\n")
-	// // list
-	// inventory, _ := mapDB.ListInventory()
-	// for _, book := range inventory {
-	// 	fmt.Println(book)
-	// }
-
-	// // get by isbn
-	// b, _ := mapDB.GetBook("hpotter")
-	// fmt.Println(b)
-
-	// // delete
-	// mapDB.DeleteBook("hpotter")
-
-	// // list
-	// inventory, _ = mapDB.ListInventory()
-	// for _, book := range inventory {
-	// 	fmt.Println(book)
-	// }
-
-	// fmt.Printf("\nSlice\n")
-	// // list
-	// i, _ := sliceDB.ListInventory()
-	// fmt.Println(i)
-
-	// // get by isbn
-	// b, _ = sliceDB.GetBook("hpotter")
-	// fmt.Println(b)
-
-	// // delete
-	// sliceDB.DeleteBook("fasimov")
-
-	// // list
-	// i, _ = sliceDB.ListInventory()
-	// fmt.Println(i)
-
-	wg.Wait()
-
+	httpMuxRouter.POST("/inventory/add", inventoryControllers.Add)
+	httpMuxRouter.GET("/inventory/all", inventoryControllers.GetAll)
+	httpMuxRouter.SERVE(":8888")
 }
 
 func getInventoryControllers() http.HTTPInteractor {
@@ -102,20 +63,5 @@ func getInventoryControllers() http.HTTPInteractor {
 	inventoryUseCases := usecases.MakeUseCasesInteractor(inventoryRepository)
 	inventoryControllers := http.NewHTTPInteractor(inventoryUseCases)
 
-	i, _ := inventoryUseCases.ListInventory()
-	for _, book := range i {
-		fmt.Println(book)
-	}
-
-	// inventoryRepository2 := repository.NewRepositoryInteractor(sliceDB)
-	// inventoryUseCases2 := usecases.NewUseCasesInteractor(inventoryRepository2)
-	// inventoryControllers2 := httpcrtls.NewHTTPInteractor(*inventoryUseCases2)
-
-	// i2, _ := inventoryUseCases2.ListInventory()
-	// for _, book := range i2 {
-	// 	fmt.Println(book)
-	// }
-
 	return *inventoryControllers
-
 }

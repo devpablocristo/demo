@@ -46,11 +46,6 @@ func (h HTTPInteractor) Add(res http.ResponseWriter, req *http.Request) {
 	res.WriteHeader(http.StatusOK)
 }
 
-// func (h HTTPInteractor) GetOne(res http.ResponseWriter, req *http.Request) {
-// 	res.Header().Set("Content-Type", "application/json")
-// 	res.WriteHeader(http.StatusOK)
-// }
-
 func (h HTTPInteractor) GetAll(res http.ResponseWriter, req *http.Request) {
 	res.Header().Set("Content-Type", "application/json")
 
@@ -64,18 +59,3 @@ func (h HTTPInteractor) GetAll(res http.ResponseWriter, req *http.Request) {
 	res.WriteHeader(http.StatusOK)
 	json.NewEncoder(res).Encode(results)
 }
-
-// func (h HTTPInteractor) UpdateOne(res http.ResponseWriter, req *http.Request) {
-// 	res.Header().Set("Content-Type", "application/json")
-// 	res.WriteHeader(http.StatusOK)
-// }
-
-// func (h HTTPInteractor) UpdateAll(res http.ResponseWriter, req *http.Request) {
-// 	res.Header().Set("Content-Type", "application/json")
-// 	res.WriteHeader(http.StatusOK)
-// }
-
-// func (h HTTPInteractor) Delete(res http.ResponseWriter, req *http.Request) {
-// 	res.Header().Set("Content-Type", "application/json")
-// 	res.WriteHeader(http.StatusOK)
-// }
