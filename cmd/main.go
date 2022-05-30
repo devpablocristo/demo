@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"sync"
 
-	chatsrv "github.com/devpablocristo/interviews/b6/chat"
-	inventorysrv "github.com/devpablocristo/interviews/b6/inventory"
+	chatsrv "github.com/devpablocristo/demo/chat"
+	inventorysrv "github.com/devpablocristo/demo/inventory"
 )
 
 func main() {

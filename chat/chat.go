@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"sync"
 
-	handlers "github.com/devpablocristo/interviews/b6/chat/handlers"
+	handlers "github.com/devpablocristo/demo/chat/handlers"
 )
 
 func ChatService(wg *sync.WaitGroup) {

@@ -3,13 +3,13 @@ package inventorysrv
 import (
 	"sync"
 
-	inventory "github.com/devpablocristo/interviews/b6/inventory/domain"
-	mapdb "github.com/devpablocristo/interviews/b6/inventory/infrastructure/mapdb"
-	muxrouter "github.com/devpablocristo/interviews/b6/inventory/infrastructure/muxrouter"
-	slicedb "github.com/devpablocristo/interviews/b6/inventory/infrastructure/slicedb"
-	http "github.com/devpablocristo/interviews/b6/inventory/interfaces/controllers/http"
-	repository "github.com/devpablocristo/interviews/b6/inventory/interfaces/repository"
-	usecases "github.com/devpablocristo/interviews/b6/inventory/usecases"
+	inventory "github.com/devpablocristo/demo/inventory/domain"
+	mapdb "github.com/devpablocristo/demo/inventory/infrastructure/mapdb"
+	muxrouter "github.com/devpablocristo/demo/inventory/infrastructure/muxrouter"
+	slicedb "github.com/devpablocristo/demo/inventory/infrastructure/slicedb"
+	http "github.com/devpablocristo/demo/inventory/interfaces/controllers/http"
+	repository "github.com/devpablocristo/demo/inventory/interfaces/repository"
+	usecases "github.com/devpablocristo/demo/inventory/usecases"
 )
 
 var (

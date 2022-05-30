@@ -5,7 +5,7 @@ import (
 
 	"github.com/bmizerany/pat"
 
-	handlers "github.com/devpablocristo/interviews/b6/chat/handlers"
+	handlers "github.com/devpablocristo/demo/chat/handlers"
 )
 
 // routes defines the application routes

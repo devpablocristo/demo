@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"net/http"
 
-	inventory "github.com/devpablocristo/interviews/b6/inventory/domain"
-	usecases "github.com/devpablocristo/interviews/b6/inventory/usecases"
+	inventory "github.com/devpablocristo/demo/inventory/domain"
+	usecases "github.com/devpablocristo/demo/inventory/usecases"
 )
 
 type HTTPInteractor struct {

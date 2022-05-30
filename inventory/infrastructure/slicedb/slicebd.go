@@ -1,7 +1,7 @@
 package slicedb
 
 import (
-	inventory "github.com/devpablocristo/interviews/b6/inventory/domain"
+	inventory "github.com/devpablocristo/demo/inventory/domain"
 )
 
 type SliceDB struct {
