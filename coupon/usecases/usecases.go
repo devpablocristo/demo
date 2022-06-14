@@ -5,65 +5,45 @@ import (
 	"sort"
 )
 
-func MaximizeTotal(amout float32, items map[string]int) []string {
-	//var itemsSorted []string
+func MaximizeTotal(amout float32, items map[string]float32) []string {
+	itemsSorted := sortMapByValueAsc(items)
 
-	itemsSorted := sortMapByValue(items)
-
-	fmt.Println(items)
-	fmt.Println(itemsSorted)
-
-	//Sort your prices from smallest to largest before running your loop.
-	//For your example it adds 2, then 3, then 5 and sees that is larger
-	//than 7 so it returns 2. If it was in order it would add 1, 2, and 3 before getting to 5.
-
-	itemsMaxComplete := mapToSlice(itemsSorted)
-
-	checkAmouth := float32(0)
-	itemsMax := make([]string, 0, len(itemsMaxComplete))
-	for i := 0; i < len(itemsMaxComplete); i++ {
-		checkAmouth += amout
-		if checkAmouth > amout {
-			break
+	amoutSum := float32(0)
+	amoutAux := float32(0)
+	itemsMax := []string{}
+	for itemName, itemPrice := range itemsSorted {
+		amoutSum += itemPrice
+		if amoutSum < amout {
+			itemsMax = append(itemsMax, itemName)
+			amoutAux += itemPrice
 		}
-
-		itemsMax = append(itemsMax, itemsMaxComplete[i])
-
 	}
 
+	sort.Strings(itemsMax)
+
+	fmt.Println("amountAux:", amoutAux)
 	return itemsMax
 }
 
-func mapToSlice(m map[string]int) []string {
-	v := make([]string, 0, len(m))
+func sortMapByValueAsc(m map[string]float32) map[string]float32 {
 
-	for s := range m {
-		v = append(v, s)
+	type kv struct {
+		Key   string
+		Value float32
 	}
 
-	return v
-}
-
-func sortMapByValue(m map[string]int) map[string]int {
-	// basket := map[string]int{"orange": 5, "apple": 7,
-	// "mango": 3, "strawberry": 9}
-
-	keys := make([]string, 0, len(m))
-
-	for key := range m {
-		keys = append(keys, key)
+	var ss []kv
+	for k, v := range m {
+		ss = append(ss, kv{k, v})
 	}
 
-	sort.SliceStable(keys, func(i, j int) bool {
-		return m[keys[i]] > m[keys[j]]
+	sort.Slice(ss, func(i, j int) bool {
+		return ss[i].Value < ss[j].Value
 	})
 
-	fmt.Println(m)
-
-	r := make(map[string]int)
-	for _, k := range keys {
-		fmt.Println(k, m[k])
-		r[k] = m[k]
+	r := make(map[string]float32)
+	for _, kv := range ss {
+		r[kv.Key] = kv.Value
 	}
 
 	return r
